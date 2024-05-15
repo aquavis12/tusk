@@ -1,0 +1,48 @@
+pipeline:
+  identifier: Build_aquavis12_tusk_1715794408195
+  name: Build tusk
+  orgIdentifier: default
+  projectIdentifier: TerraformProvider
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: account.Github_OAuth_1715794394132
+        repoName: aquavis12/tusk
+  stages:
+    - stage:
+        identifier: build
+        name: build
+        spec:
+          caching:
+            enabled: true
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: runlinter
+                  name: run linter
+                  spec:
+                    command: |-
+                      pip install flake8
+                      flake8 .
+                  timeout: ""
+                  type: Run
+              - step:
+                  identifier: setupvirtualenvironment
+                  name: setup virtual environment
+                  spec:
+                    command: |-
+                      python3 -m venv .venv
+                      . .venv/bin/activate
+                      python3 -m pip install -r requirements.txt
+                      python3 -m pip install -e .
+                  timeout: ""
+                  type: Run
+          platform:
+            arch: Arm64
+            os: MacOS
+          runtime:
+            spec: {}
+            type: Docker
+        type: CI
