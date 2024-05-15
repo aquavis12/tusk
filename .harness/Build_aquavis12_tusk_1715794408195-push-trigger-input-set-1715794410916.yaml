@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_aquavis12_tusk_1715794408195-push-trigger-input-set
+  identifier: Build_aquavis12_tusk_1715794408195pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: TerraformProvider
+  pipeline:
+    identifier: Build_aquavis12_tusk_1715794408195
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
