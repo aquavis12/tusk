@@ -42,7 +42,7 @@ pipeline:
                   timeout: ""
                   type: Run
           platform:
-            os: MacOS
+            os: Linux
             arch: Arm64
           runtime:
             type: Docker
