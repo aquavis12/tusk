@@ -23,6 +23,7 @@ pipeline:
                   identifier: runlinter
                   name: run linter
                   spec:
+                    shell: Sh
                     command: |-
                       pip install flake8
                       flake8 .
@@ -32,6 +33,7 @@ pipeline:
                   identifier: setupvirtualenvironment
                   name: setup virtual environment
                   spec:
+                    shell: Sh
                     command: |-
                       python3 -m venv .venv
                       . .venv/bin/activate
@@ -40,9 +42,9 @@ pipeline:
                   timeout: ""
                   type: Run
           platform:
-            arch: Arm64
             os: MacOS
+            arch: Arm64
           runtime:
-            spec: {}
             type: Docker
+            spec: {}
         type: CI
